@@ -1,0 +1,22 @@
+{
+  "fund_name": "Adonis Capital Group",
+  "fund_strategy": "Commercial Real Estate Private Credit",
+  "fund_manager": "Adonis Capital Group",
+  "vintage_year": "",
+  "currency": "USD",
+  "gdrive_folder": "Monthly Statements",
+  "file_pattern": "",
+  "primary_color": "#1A1A1A",
+  "accent_color": "#C9A84C",
+  "bg_light": "#F7F8FA",
+  "text_dark": "#2C3E50",
+  "font_header": "Calibri",
+  "font_body": "Calibri Light",
+  "logo_path": "brand/logo.svg",
+  "date_format": "Month YYYY",
+  "include_cover_letter": false,
+  "include_loan_schedule": false,
+  "custom_disclaimer": "",
+  "contact_email": "",
+  "contact_website": ""
+}
