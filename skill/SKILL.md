@@ -363,6 +363,18 @@ Read these before building outputs:
 
 - `references/pdf_template.md` — Full PDF layout, color codes, section specs
 - `references/pptx_template.md` — Full slide-by-slide PowerPoint spec
+- `references/generate_pdf.py` — **Working Python/reportlab PDF generator** (use this directly — do not rewrite from scratch)
+- `references/generate_deck.js` — **Working Node.js/pptxgenjs PPTX generator** (use this directly — do not rewrite from scratch)
+
+### Critical: Always Use the Reference Scripts
+
+The generator scripts in `references/` have been tested and debugged with correct layout dimensions, column widths, and styling. **Always copy them as the starting point and only modify the data injection sections** — never rewrite the layout code from scratch. Rewriting risks reintroducing layout bugs that have already been fixed (overflow columns, clipped text, misaligned headers, etc.).
+
+When running a monthly report:
+1. Copy `references/generate_pdf.py` to the working directory
+2. Replace the mock data section (`cur = {...}` and `prev = {...}`) with the extracted real data
+3. Run the script to generate the PDF
+4. Repeat the same process for `references/generate_deck.js`
 
 ---
 
