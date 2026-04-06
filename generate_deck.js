@@ -178,9 +178,9 @@ function addStatBox(slide, x, y, value, label, deltaText, deltaColor) {
   );
 
   // Health sidebar
-  slide.addShape(pres.ShapeType.roundRect, {x:10.1,y:2.7,w:3.0,h:3.0,fill:{color:NAVY},rectRadius:0.05});
-  slide.addText("Fund Health", {x:10.1,y:2.82,w:3.0,h:0.35,fontSize:11,bold:true,color:WHITE,fontFace:"Calibri",align:"center"});
-  slide.addShape(pres.ShapeType.rect,{x:10.1,y:3.17,w:3.0,h:0.015,fill:{color:GOLD}});
+  slide.addShape(pres.ShapeType.roundRect, {x:10.0,y:2.7,w:3.15,h:3.2,fill:{color:NAVY},rectRadius:0.05});
+  slide.addText("Fund Health", {x:10.0,y:2.82,w:3.15,h:0.38,fontSize:12,bold:true,color:WHITE,fontFace:"Calibri",align:"center"});
+  slide.addShape(pres.ShapeType.rect,{x:10.0,y:3.2,w:3.15,h:0.015,fill:{color:GOLD}});
   const health = [
     ["✓ Preferred Return: CURRENT", GREEN],
     ["✓ Portfolio: 100% Performing", GREEN],
@@ -189,7 +189,7 @@ function addStatBox(slide, x, y, value, label, deltaText, deltaColor) {
     [`MOIC: ${fmtX(cur.moic)}`, GOLD],
   ];
   health.forEach(([txt,col],i) => {
-    slide.addText(txt, {x:10.25, y:3.28+i*0.48, w:2.7, h:0.4, fontSize:9.5, color:col, fontFace:"Calibri Light"});
+    slide.addText(txt, {x:10.12, y:3.33+i*0.52, w:2.9, h:0.44, fontSize:10.5, color:col, fontFace:"Calibri Light"});
   });
 
   addFooter(slide, 2);
@@ -416,7 +416,7 @@ function addStatBox(slide, x, y, value, label, deltaText, deltaColor) {
       {text:typ, options:{fill:{color:i%2===0?WHITE:ALT_ROW},fontSize:9,fontFace:"Calibri Light",color:TEXT_DARK}},
     ])
   ];
-  slide.addTable(dealRows,{x:0.35,y:3.03,w:12.6,colW:[2.5,1.5,1.0,0.75,1.25,0.75,1.5],border:{type:"solid",color:"DDDDDD",pt:0.3},rowH:0.4,fontFace:"Calibri"});
+  slide.addTable(dealRows,{x:0.35,y:3.03,w:12.6,colW:[3.2,1.9,1.4,1.0,1.6,0.9,1.8],border:{type:"solid",color:"DDDDDD",pt:0.3},rowH:0.44,fontFace:"Calibri"});
 
   slide.addText(
     "The fund closed two new senior secured loans in April, deploying $14.0M at a blended weighted average LTV of 60.5% and coupon of SOFR+360 bps. Riverside Commons (Austin) represents the fund's fifth Texas exposure, reinforcing the Sunbelt concentration strategy. One $9.2M retail center loan repaid at par. The pipeline of $22M is expected to close in Q2 2026.",
@@ -510,11 +510,11 @@ function addStatBox(slide, x, y, value, label, deltaText, deltaColor) {
   );
 
   // Market context box
-  slide.addShape(pres.ShapeType.roundRect,{x:1.0,y:5.4,w:11.3,h:1.4,fill:{color:NAVY_DARK},line:{color:MUTED,width:0.5},rectRadius:0.04});
-  slide.addText("Market Context", {x:1.2,y:5.5,w:2.0,h:0.3,fontSize:9,bold:true,color:GOLD,fontFace:"Calibri"});
+  slide.addShape(pres.ShapeType.roundRect,{x:0.8,y:5.1,w:11.8,h:1.85,fill:{color:NAVY_DARK},line:{color:MUTED,width:0.5},rectRadius:0.04});
+  slide.addText("Market Context", {x:1.05,y:5.22,w:2.5,h:0.35,fontSize:11,bold:true,color:GOLD,fontFace:"Calibri"});
   slide.addText(
     "SOFR has stabilized in the 5.30–5.35% range, keeping floating-rate coupon income near cycle highs. Sunbelt multifamily fundamentals remain strong with vacancy rates below 5% in the fund's key markets. Industrial demand continues to benefit from e-commerce tailwinds and near-shoring activity.",
-    {x:1.2,y:5.82,w:10.9,h:0.85,fontSize:9.5,color:"AABDD0",fontFace:"Calibri Light"}
+    {x:1.05,y:5.6,w:11.3,h:1.2,fontSize:11.5,color:"AABDD0",fontFace:"Calibri Light"}
   );
 
   // White footer on dark
@@ -548,7 +548,7 @@ function addStatBox(slide, x, y, value, label, deltaText, deltaColor) {
     [{text:"New Originations / Repayments / Pipeline",options:{fill:{color:WHITE},fontSize:9,fontFace:"Calibri Light",color:TEXT_DARK}},{text:`2 / $14.0M  |  1 / $9.2M  |  3 / $22.0M`,options:{fill:{color:WHITE},fontSize:9,fontFace:"Calibri Light",align:"right"}}],
   ];
 
-  slide.addTable(appData,{x:0.35,y:1.05,w:12.6,colW:[7.5,4.8],border:{type:"solid",color:"DDDDDD",pt:0.3},rowH:0.36,fontFace:"Calibri"});
+  slide.addTable(appData,{x:0.35,y:1.05,w:12.6,colW:[7.5,4.8],border:{type:"solid",color:"DDDDDD",pt:0.3},rowH:0.42,fontFace:"Calibri"});
 
   slide.addText(
     `Data source: Test mock data (demo run). Figures are unaudited and for illustrative purposes only.  |  ${MANAGER}  |  ${CONTACT}`,

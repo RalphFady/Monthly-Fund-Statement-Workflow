@@ -234,9 +234,11 @@ def draw_cover(c, doc):
     # fund name
     c.setFillColor(WHITE)
     c.setFont('Helvetica-Bold', 34)
-    c.drawString(54, rule_y + 36, FUND_NAME.replace(", L.P.", ""))
-    c.setFont('Helvetica-Bold', 16)
-    c.drawString(54, rule_y + 14, ", L.P.")
+    c.drawString(54, rule_y + 50, FUND_NAME.replace(", L.P.", ""))
+    c.setFont('Helvetica', 18)
+    c.setFillColor(GOLD)
+    c.drawString(54, rule_y + 24, "L.P.")
+    c.setFillColor(WHITE)
 
     # strategy
     c.setFillColor(GOLD)
@@ -593,7 +595,7 @@ ret_note = Paragraph("<i>Returns are unaudited. Net returns are after all manage
 
 ret_dist_col = Table(
     [ret_headers] + ret_rows + [[ret_note, "", ""]],
-    colWidths=[150, 50, 50]
+    colWidths=[115, 42, 38]
 )
 ret_dist_col.setStyle(TableStyle([
     ('BACKGROUND', (0,0), (-1,0), NAVY),
@@ -618,7 +620,7 @@ dist_h_rows = [[
     Paragraph(d, S('dr', fontName='Helvetica' if i < 5 else 'Helvetica-Bold', fontSize=9, alignment=TA_RIGHT, textColor=GOLD if i==5 else TEXT_DARK)),
     Paragraph(y, S('dy', fontName='Helvetica' if i < 5 else 'Helvetica-Bold', fontSize=9, alignment=TA_RIGHT, textColor=GOLD if i==5 else TEXT_DARK)),
 ] for i,(p,d,y) in enumerate(DIST_HISTORY)]
-dist_h = Table([dist_h_headers] + dist_h_rows, colWidths=[80, 50, 60])
+dist_h = Table([dist_h_headers] + dist_h_rows, colWidths=[62, 38, 44])
 dist_h.setStyle(TableStyle([
     ('BACKGROUND', (0,0), (-1,0), NAVY),
     ('ROWBACKGROUNDS', (0,1), (-1,-1), [WHITE, ALT_ROW]),
@@ -632,7 +634,7 @@ dist_h.setStyle(TableStyle([
 
 narrative_p = Paragraph(COMMENTARY['distributions'], s_body)
 
-full_row = Table([[narrative_p, ret_dist_col, dist_h]], colWidths=[220, 260, 196])
+full_row = Table([[narrative_p, ret_dist_col, dist_h]], colWidths=[165, 195, 144])
 full_row.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'TOP'),('LEFTPADDING',(0,0),(-1,-1),0),('RIGHTPADDING',(0,0),(0,0),12),('RIGHTPADDING',(1,0),(1,0),10)]))
 story.append(full_row)
 story.append(PageBreak())
@@ -717,7 +719,7 @@ geo_total = [
     Paragraph("<b>$138.2M</b>", S('gt', fontName='Helvetica-Bold', fontSize=9, alignment=TA_RIGHT)),
     Paragraph("<b>100%</b>",  S('gt', fontName='Helvetica-Bold', fontSize=9, textColor=GOLD, alignment=TA_RIGHT)),
 ]
-geo_table = Table([geo_headers] + geo_rows + [geo_total], colWidths=[120, 60, 90, 90])
+geo_table = Table([geo_headers] + geo_rows + [geo_total], colWidths=[95, 50, 72, 58])
 geo_table.setStyle(TableStyle([
     ('BACKGROUND', (0,0), (-1,0), NAVY),
     ('ROWBACKGROUNDS', (0,1), (-2,-1), [WHITE, ALT_ROW]),
@@ -742,7 +744,7 @@ prop_rows2 = [[
     Paragraph(f"{pct}%", S('pr3', fontName='Helvetica-Bold', fontSize=9, textColor=GOLD, alignment=TA_RIGHT)),
     Paragraph(fmt_m(bal), S('pr4', fontName='Helvetica', fontSize=9, alignment=TA_RIGHT)),
 ] for pt,pct,bal in PROPERTY_TYPES]
-prop_table2 = Table([prop_headers2] + prop_rows2, colWidths=[110, 50, 70])
+prop_table2 = Table([prop_headers2] + prop_rows2, colWidths=[90, 52, 78])
 prop_table2.setStyle(TableStyle([
     ('BACKGROUND', (0,0), (-1,0), NAVY),
     ('ROWBACKGROUNDS', (0,1), (-1,-1), [WHITE, ALT_ROW]),
@@ -757,7 +759,7 @@ prop_table2.setStyle(TableStyle([
 comp_row = Table([
     [Paragraph("<b>By Geography (MSA / State)</b>", s_bold), Paragraph("<b>By Property Type</b>", s_bold)],
     [geo_table, prop_table2],
-], colWidths=[380, 246])
+], colWidths=[280, 220])
 comp_row.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'TOP'),('LEFTPADDING',(0,0),(-1,-1),0),('RIGHTPADDING',(0,0),(0,-1),16),('TOPPADDING',(0,0),(-1,0),0),('BOTTOMPADDING',(0,0),(-1,0),8)]))
 story.append(comp_row)
 
@@ -844,7 +846,7 @@ story.append(Paragraph("Appendix — Complete Data Extract", S('pt7', fontName='
 story.append(gold_rule())
 
 def section_hdr(txt):
-    return [Paragraph(f"<b>{txt}</b>", S('ah', fontName='Helvetica-Bold', fontSize=9, textColor=WHITE))] * 2
+    return [Paragraph(f"<b>{txt}</b>", S('ah', fontName='Helvetica-Bold', fontSize=9, textColor=WHITE)), ""]
 
 def arow(label, value, bold_val=False):
     vs = S('av', fontName='Helvetica-Bold' if bold_val else 'Helvetica', fontSize=9, leading=12, textColor=GOLD if bold_val else TEXT_DARK, alignment=TA_RIGHT)
@@ -898,10 +900,11 @@ app_ts = TableStyle([
     ('LINEBELOW',  (0,0), (-1,-1), 0.3, HexColor('#DDDDDD')),
 ])
 # Section header rows
-hdr_idxs = [0, 10, 18, 27]
+hdr_idxs = [0, 10, 19, 28]
 for idx in hdr_idxs:
     app_ts.add('BACKGROUND', (0,idx), (-1,idx), NAVY)
     app_ts.add('LINEBELOW',  (0,idx), (-1,idx), 1, GOLD)
+    app_ts.add('SPAN',       (0,idx), (-1,idx))
 # Alt rows
 for i in range(len(app_data)):
     if i not in hdr_idxs:
